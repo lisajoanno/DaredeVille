@@ -47,7 +47,7 @@ Vous pouvez ensuite quitter ce terminal :
     $ npm install
 `
 
-Ouvrez le fichier configurations/env/database.env et changez les valeurs par les votres (login / mdp)
+Ouvrez le fichier configurations/env/database.env et **changez les valeurs par les votres** (login / mdp)
 
 
 **Allez dans le répertoire scripts puis executez le script pour charger les variables d'environnement** :
