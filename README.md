@@ -23,13 +23,13 @@ Ouvrez un terminal mysql :
     $ mysql -u YourLogin -p
 `
 
-vous arrivez ensuite dans un prompt du type :
+Vous arrivez ensuite dans un prompt du type :
 
 `
     >mysql
 `
 
-créez une nouvelle base de données pour notre projet :
+Créez une nouvelle base de données pour notre projet :
 
 `
     >mysql CREATE DATABASE dardeville
