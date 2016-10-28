@@ -29,7 +29,7 @@ Vous arrivez ensuite dans un prompt du type :
     >mysql
 `
 
-Créez une nouvelle base de données pour notre projet :
+**Créez une nouvelle base de données** pour notre projet :
 
 `
     >mysql CREATE DATABASE dardeville
