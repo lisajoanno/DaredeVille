@@ -47,5 +47,18 @@ Vous pouvez ensuite quitter ce terminal :
     $ npm install
 `
 
-Et puis voilà, on a donc : une base de données mySQL avec tout les packages nécessaires
-installés.
+Ouvrez le fichier configurations/env/database.env et changez les valeurs par les votres (login / mdp)
+
+
+**Allez dans le répertoire scripts puis executez le script pour charger les variables d'environnement** :
+
+`
+    $ cd scripts
+    $ . environment_variables_script.sh
+`
+
+Enfin, allez exporter notre schema Bookshelf dans notre base de données en executant un script js :
+
+`
+    $ node ./model/migrate.js
+`
