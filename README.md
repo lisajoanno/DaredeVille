@@ -9,7 +9,7 @@ Il faut tout d'abord **installer mysql** sur votre machine :
     $ sudo apt-get install mysql
 `
 
-Vous avez du choisir un login/mdp.
+Vous avez dû choisir un login/mdp.
 
 Maintenant, théoriquement, le **service est déjà activé**, mais au cas où :
 
