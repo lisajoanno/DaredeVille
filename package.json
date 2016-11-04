@@ -4,7 +4,8 @@
   "private": true,
   "scripts": {
     "start": "node ./bin/www",
-    "set_env": ""
+    "set_env": "",
+    "test": "mocha"
   },
   "dependencies": {
     "@google/maps": "^0.3.0",
