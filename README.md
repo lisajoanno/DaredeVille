@@ -22,47 +22,47 @@ Un driver coté client pour se connecter facilement à des dispositifs (bracelet
 
 Il faut tout d'abord **installer mysql** sur votre machine :
 
-`
+```shell
     $ sudo apt-get install mysql
-`
+```
 
 Vous avez dû choisir un login/mdp.
 
 Maintenant, théoriquement, le **service est déjà activé**, mais au cas où :
 
-`
+```shell
     $ sudo service mysql start
-`
+```
 
 Ouvrez un terminal mysql :
 
-`
+```shell
     $ mysql -u YourLogin -p
-`
+```
 
 Vous arrivez ensuite dans un prompt du type :
 
-`
+```shell
     >mysql
-`
+```
 
 **Créez une nouvelle base de données** pour notre projet :
 
-`
+```shell
     >mysql CREATE DATABASE dardeville
-`
+```
 
 Vous pouvez ensuite quitter ce terminal : 
 
-`
+```shell
     >mysql quit
-`
+```
 
 **Allez dans le répertoire du projet** puis **installez les packages nécessaires** :
 
-`
+```shell
     $ npm install
-`
+```
 
 Ouvrez le fichier configurations/env/database.env et **changez les valeurs par les votres** (login / mdp)
 
