@@ -1,0 +1,12 @@
+language: node_js
+node_js:
+- '6'
+- '4'
+
+deploy:
+  provider: heroku
+  api_key:
+    secure: hy6yfPxzjQTw94XdFoqcCGuKYq7ld5r6XTShEnlhVEapOVVhkcUlZrXesVm7EjAocNMIdr+mJoRJKG1+DqD/UEu5i20exOBkq+TD7y4+Os2NNbWjAoC1k4ldF4u7xfSBg1ZGjRfVDZp9Gk0aS8S8tLp5fcODcnGHty+vSw3QiE+yPlsQOE5HktEW3I8f2E5oiJH3MrPcC1L1tBhQgVETRrg0vFerdQOVBIWIGTIMjjLNbvA7gKRBA9lJnI+k60egiLUKpXEVgRig/lhz9s8xQYHi12dd+4ISLa8J8kWSATsaki0vonvKqHFBqL21mj3Xtp7AQJshjLwN365q7rBcoze4+W5p54+7u7cBuEK3O3bOPR4x68ba9/6u0mcqTiEPZlsm/jRP7DAFUKHQwfhSQhXkJ+YwCrScCVnTzmhpuXrSq++Z2Kvar6eiFXqPiiZK4FTLbTPjeHeNSu2x0dEkBoZrf45RW0RZZ5Xx/+04aiejGN+mdeiFjKMycB7yJd7K9TduHAYRreBL7BNnbnwEEy9RrzHgYib4X+HV3h8fg22ibA4jwNX1+M0Vo2cDr4ss2OqTiICbck9R4Cuz1tqNzR9pFLFcXPTmAPm+71g6qQPf2w2KGZycTQuVv9iXcqoIeurVkYgFgsBi78sTxW9I2/mDVuEh4o/Jc65PwZdSG7k=
+  app: DaredeVille
+  on:
+    repo: lisajoanno/DaredeVille
