@@ -69,13 +69,13 @@ Ouvrez le fichier configurations/env/database.env et **changez les valeurs par l
 
 **Allez dans le répertoire scripts puis executez le script pour charger les variables d'environnement** :
 
-`
+```shell
     $ cd scripts
     $ . environment_variables_script.sh
-`
+```
 
 Enfin, allez exporter notre schema Bookshelf dans notre base de données en executant un script js :
 
-`
+```shell
     $ node ./model/migrate.js
-`
+```
