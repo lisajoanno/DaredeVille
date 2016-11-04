@@ -7,6 +7,7 @@
  ***********************************************/
 
 var client = require('./connection').googleMapsClient;
+var converter = require('../converters/gm_directions_to_dardeville_itinerary');
 var Promise = require('promise');
 function getItinerary() {
     return new Promise(function(resolve, reject) {
@@ -18,11 +19,16 @@ function getItinerary() {
             destination: {
                 lat: 43.623448,
                 lng: 7.061697
-            }
+            },
+            mode: "walking"
         }, function (err, data) {
             if (!err) {
-                resolve(data.json)
+                console.log("blabla");
+                var txt = converter.convert(data.json);
+                console.log(txt);
+                resolve(txt)
             } else {
+                console.log("balbal");
                 reject(err)
             }
         });

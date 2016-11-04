@@ -8,31 +8,17 @@
 var Promise = require('promise');
 
 var directionsToDardevilleConverter = {
-    convert: convertDirectionsToDarDeVille
+    convert: convertDirectionsToDareDeVille
+};
+
+/**
+ * A partir de la reponse de google, on ne prend que les informations qui nous plaisent.
+ * @param directionsOutput
+ */
+function convertDirectionsToDareDeVille (directionsOutput) {
+    var format = {};
+    format.routes = directionsOutput.routes;
+    return format;
 }
 
-function convertDirectionsToDarDeVille (directionsOutput) {
-    return new Promise(function(resolve, reject) {
-        var darDeVilleFormat = {
-
-        }
-        client.directions({
-            origin: {
-                lat: 43.616217,
-                lng: 7.074583
-            },
-            destination: {
-                lat: 43.623448,
-                lng: 7.061697
-            }
-        }, function (err, data) {
-            if (!err) {
-                resolve(data.json)
-            } else {
-                reject(err)
-            }
-        });
-    })
-
-
-}
+exports = directionsToDardevilleConverter;
