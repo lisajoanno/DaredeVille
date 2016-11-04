@@ -4,3 +4,9 @@ node_js:
 
 notifications:
   email: false
+
+install:
+  - npm install
+
+script:
+  - npm test
