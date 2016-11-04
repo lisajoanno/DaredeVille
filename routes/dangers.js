@@ -49,8 +49,6 @@ router.post('/', function(req, res, next) {
     // } else {
     //     notifications = [];
     // }
-    console.log("test#1");
-    console.log(req.body);
     Danger.forge({
         longitude: req.body.longitude,
         latitude: req.body.latitude,
