@@ -16,6 +16,7 @@ var directionDriver = require('../components/directions/itinerary_calculator').d
 router.get('/', function(req, res, next) {
     directionDriver.getItinerary()
         .then(function(data) {
+            console.log("YOOOOOOOOOOOOOOOOOOOOOOO\n\n\n");
             res.json(data);
     })
 });
