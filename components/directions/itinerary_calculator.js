@@ -18,7 +18,8 @@ function getItinerary() {
             destination: {
                 lat: 43.623448,
                 lng: 7.061697
-            }
+            },
+            mode: "walking"
         }, function (err, data) {
             if (!err) {
                 resolve(data.json)
