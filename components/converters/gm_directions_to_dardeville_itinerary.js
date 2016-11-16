@@ -5,7 +5,6 @@
  * EMAIL:          alexandre.cazala@gmail.com   *
  * LICENSE:        Apache 2.0                   *
  ***********************************************/
-var Promise = require('promise');
 
 var directionsToDardevilleConverter = {
     convert: convertFct
