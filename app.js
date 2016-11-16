@@ -7,6 +7,7 @@ var bodyParser = require('body-parser');
 
 var dangers = require('./routes/dangers');
 var itinerary = require('./routes/itinerary');
+var mailer = require('./routes/mailer');
 var app = express();
 
 
@@ -24,6 +25,7 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/dangers', dangers);
+app.use('/mailer', mailer);
 app.use('/itinerary', itinerary);
 
 
