@@ -3,6 +3,8 @@ var expect = chai.expect;
 var DirectionDriver = require('../components/directions/itinerary_calculator').directionDriver;
 var request = require("request");
 
+var url = "http://daredeville.herokuapp.com/itinerary";
+
 describe('Itinerary', function() {
 
     describe('Direction driver', function () {
@@ -17,15 +19,13 @@ describe('Itinerary', function() {
 
     describe('Test GET route', function(){
 
-        var url = "http://daredeville.herokuapp.com:3000/itineraryaaaa";
-
-        it('returns status 200', function(){
+        it('returns status 200', function(done){
             request(url, function(error, response, body) {
-                console.log("COUCOUCOUCOUCOU : "+response.statusCode);
                 expect(response.statusCode).to.equal(200);
                 done();
             });
         });
+
     });
 
 });
