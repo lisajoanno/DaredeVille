@@ -8,17 +8,17 @@
 var Promise = require('promise');
 
 var directionsToDardevilleConverter = {
-    convert: convertDirectionsToDareDeVille
+    convert: convertFct
 };
 
 /**
  * A partir de la reponse de google, on ne prend que les informations qui nous plaisent.
  * @param directionsOutput
  */
-function convertDirectionsToDareDeVille (directionsOutput) {
+function  convertFct (directionsOutput) {
     var format = {};
     format.routes = directionsOutput.routes;
     return format;
 }
 
-exports = directionsToDardevilleConverter;
+exports.converter = directionsToDardevilleConverter;
