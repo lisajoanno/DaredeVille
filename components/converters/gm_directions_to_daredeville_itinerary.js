@@ -6,7 +6,7 @@
  * LICENSE:        Apache 2.0                   *
  ***********************************************/
 
-var directionsToDardevilleConverter = {
+var directionsToDaredevilleConverter = {
     convert: convertFct
 };
 
@@ -20,4 +20,4 @@ function  convertFct (directionsOutput) {
     return format;
 }
 
-exports.converter = directionsToDardevilleConverter;
+exports.converter = directionsToDaredevilleConverter;

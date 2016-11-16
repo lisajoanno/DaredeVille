@@ -7,7 +7,7 @@
  ***********************************************/
 
 var client = require('./connection').googleMapsClient;
-var converter = require('../converters/gm_directions_to_dardeville_itinerary').converter;
+var converter = require('../converters/gm_directions_to_daredeville_itinerary').converter;
 var Promise = require('promise');
 function getItinerary() {
     return new Promise(function(resolve, reject) {
