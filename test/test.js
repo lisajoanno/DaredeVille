@@ -6,7 +6,7 @@ describe('Itinerary', function() {
     describe('Direction driver', function () {
         it('gets the itinerary', function() {
             DirectionDriver.getItinerary().then(function(data){
-                expect(data.status).to.equal("OK");
+                expect(data.status).to.equal("AHEUAHOHU");
             });
         });
     });
