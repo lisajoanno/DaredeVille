@@ -9,4 +9,5 @@ install:
   - npm install
 
 script:
+- . environment_variables_script.sh
 - npm test
