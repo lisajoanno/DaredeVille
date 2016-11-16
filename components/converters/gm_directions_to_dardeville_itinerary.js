@@ -14,9 +14,10 @@ var directionsToDardevilleConverter = {
  * A partir de la reponse de google, on ne prend que les informations qui nous plaisent.
  * @param directionsOutput
  */
-function  convertFct (directionsOutput) {
+function  convertFct(directionsOutput) {
     var format = {};
     format.routes = directionsOutput.routes;
+    
     return format;
 }
 

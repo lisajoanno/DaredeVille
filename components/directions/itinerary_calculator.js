@@ -8,22 +8,22 @@
 
 var client = require('./connection').googleMapsClient;
 var converter = require('../converters/gm_directions_to_dardeville_itinerary').converter;
+var bestwayFinder = require('../bestWay/bestway').bestwayFinder;
 var Promise = require('promise');
 function getItinerary() {
-    return new Promise(function(resolve, reject) {
+    return new Promise(function (resolve, reject) {
         client.directions({
-            origin: {
-                lat: 43.616217,
-                lng: 7.074583
-            },
+            origin: "Gare de Nice-Ville, 12 Avenue Thiers, 06000 Nice",
             destination: {
-                lat: 43.623448,
-                lng: 7.061697
+                lat: 43.701950, 
+                lng: 7.280609
             },
+            alternatives:true,
             mode: "walking"
         }, function (err, data) {
             if (!err) {
-                var txt = converter.convert(data.json);
+                var json = converter.convert(data.json)
+                var txt = bestwayFinder.findBestway(json);
                 resolve(txt)
             } else {
                 console.log(err);
