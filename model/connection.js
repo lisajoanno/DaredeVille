@@ -15,7 +15,9 @@ var knex = require('knex')({
         user     : database_configuration.user,
         password : database_configuration.password,
         database : database_configuration.database,
-        charset  : 'utf8'
+        port     : database_configuration.port,
+        //_socket: '/var/run/mysqld/mysqld.sock'
     }
 });
+
 exports.knex = knex;

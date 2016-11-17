@@ -41,14 +41,6 @@ router.get('/', function(req, res, next) {
 
 /* POST a new danger */
 router.post('/', function(req, res, next) {
-    // Parse notifications
-    // if (notifications) {
-    //     notifications = notifications.split(',').map(function(notification) {
-    //         return notification.trim();
-    //     })
-    // } else {
-    //     notifications = [];
-    // }
     Danger.forge({
         longitude: req.body.longitude,
         latitude: req.body.latitude,

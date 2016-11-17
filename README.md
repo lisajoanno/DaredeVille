@@ -79,3 +79,8 @@ Enfin, allez exporter notre schema Bookshelf dans notre base de données en exec
 ```shell
     $ node ./model/migrate.js
 ```
+
+
+## Ajouter des dangers
+
+Requête POST sur /dangers
