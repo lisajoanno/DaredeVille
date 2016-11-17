@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="fr" ng-app="trigunale">
+<html lang="fr" ng-app="daredeville">
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -10,7 +10,15 @@
     <link rel="stylesheet" href="assets/css/bootstrap.min.css" />
     <link rel="stylesheet" href="app.css">
     <link rel="stylesheet" href="assets/css/sandstone.css">
-    <!--<link rel="stylesheet" href="assets/css/expe.css" />-->
+    <style>
+      html, body {
+        height:100%;
+      }
+      #map {
+        height: 100%;
+        width: 100%;
+      }
+    </style>
   </head>
   <body>
 
@@ -27,8 +35,7 @@
       </div>
       <div id="navbar" class="navbar-collapse collapse">
         <ul class="nav navbar-nav">
-          <li class="active"><a href="#">Accueil</a></li>
-          <li><a href="#contact">Retrouver une personne perdue</a></li>
+          <li class="active"><a href="#">Danger</a></li>
           <li class="dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Documentation <span class="caret"></span></a>
             <ul class="dropdown-menu">
@@ -43,46 +50,18 @@
     </div>
   </nav>
 
-  <!-- Main jumbotron for a primary marketing message or call to action -->
-  <div class="jumbotron">
-    <div class="container">
-      <h1>Bien vu l'aveugle</h1>
-      <p>Dorénavant, meme sans les yeux tu pourras te déplacer en ville grace à l'application DareDeVille
-    </div>
-  </div>
-
-  <div class="container">
-    <!-- Example row of columns -->
-    <div class="row">
-      <div class="col-md-4">
-        <h2>Créateur d'itinéraire</h2>
-        <p>Avec dardeville vous pourrez créer un itinéraire en évitant les dangers recensés. Vous pourrez aussi spécifier le numéro de la personne à appeler et à qui on enverra vos données GPS en cas de soucis</p>
-        <p><a class="btn btn-default" href="#" role="button">Voir la documentation &raquo;</a></p>
-      </div>
-      <div class="col-md-4">
-        <h2>Dangers en temps réel</h2>
-        <p>Vous pouvez voir l'état en temps réel d'une ville supportée par notre application</p>
-        <p><a class="btn btn-default" href="#" role="button">Voir la documentation &raquo;</a></p>
-      </div>
-      <div class="col-md-4">
-        <h2>Assistant de déplacement</h2>
-        <p>Toi aussi évite les trous sans les yeux, fais gaffe tu n'as qu'une vie.</p>
-        <p><a class="btn btn-default" href="#" role="button">Voir la documentation &raquo;</a></p>
-      </div>
-    </div>
-
-    <hr>
-
+  <div id="map"></div>
+  <div ng-view></div>
+  <hr>
     <footer>
       <p>&copy; 2016 DareDeVille, Inc.</p>
     </footer>
-  </div> <!-- /container -->
 
     <!--[if lt IE 7]>
         <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
 
-    <div ng-view></div>
+
 
     <script src="assets/javascript/angular.min.js"></script>
     <script src="assets/javascript/angular-route.min.js"></script>
@@ -90,5 +69,21 @@
     <script src="app.js"></script>
     <script src="components/dangers/dangers.js"></script>
     <script src="components/itinerary/itinerary.js"></script>
+  <script>
+    function initMap() {
+      var uluru = {lat: 43.6047592, lng: 7.0639505};
+      var map = new google.maps.Map(document.getElementById('map'), {
+        zoom: 13,
+        center: uluru
+      });
+      var marker = new google.maps.Marker({
+        position: uluru,
+        map: map
+      });
+    }
+  </script>
+  <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDTEwE36GOEhTOzvRzRnr0YDNm-kf9C0Ek&callback=initMap">
+  </script>
+
   </body>
 </html>

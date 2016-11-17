@@ -7,8 +7,8 @@
  ***********************************************/
 'use strict';
 
-var app = angular.module('dardeville.dangers', ['ngRoute']);
+var app = angular.module('daredeville.dangers', ['ngRoute']);
 
-app.controller('dangersCtrl', ['$scope', '$http',function($scope, $http) {
+app.controller('dangersCtrl', ['$scope',function($scope) {
     console.log("dangersCtrl");
 }]);

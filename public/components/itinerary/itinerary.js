@@ -7,7 +7,7 @@
  ***********************************************/
 'use strict';
 
-var app = angular.module('dardeville.itinerary', ['ngRoute']);
+var app = angular.module('daredeville.itinerary', ['ngRoute']);
 
 app.controller('itineraryCtrl', ['$scope', '$http',function($scope, $http) {
     console.log("itineraryCtrl");
