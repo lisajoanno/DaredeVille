@@ -9,7 +9,6 @@
 
 # Local files
 *.log
-*.env
 
 node_modules/
 # if you remove the above rule, at least ignore the following:
