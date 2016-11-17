@@ -24,9 +24,9 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/api/dangers', dangers);
-app.use('/api/mailer', mailer);
-app.use('/api/itinerary', itinerary);
+app.use('/api/v1/dangers', dangers);
+app.use('/api/v1/mailer', mailer);
+app.use('/api/v1/itinerary', itinerary);
 
 
 // catch 404 and forward to error handler
