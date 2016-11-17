@@ -9,6 +9,7 @@
   },
   "dependencies": {
     "@google/maps": "^0.3.0",
+    "async": "^2.1.2",
     "body-parser": "^1.15.2",
     "bookshelf": "^0.10.2",
     "cookie-parser": "~1.4.3",

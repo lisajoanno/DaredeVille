@@ -24,7 +24,8 @@ function getItinerary() {
             if (!err) {
                 var json = converter.convert(data.json)
                 var txt = bestwayFinder.findBestway(json);
-                resolve(txt)
+                if(txt == undefined) resolve(txt);
+                else resolve(json);
             } else {
                 console.log(err);
                 reject(err)
