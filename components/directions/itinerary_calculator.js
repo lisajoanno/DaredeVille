@@ -22,7 +22,7 @@ function getItinerary() {
             mode: "walking"
         }, function (err, data) {
             if (!err) {
-                var json = converter.convert(data.json)
+                var json = converter.convert(data.json);
                 var txt = bestwayFinder.findBestway(json);
                 if(txt == undefined) resolve(txt);
                 else resolve(json);
