@@ -41,6 +41,9 @@ router.get('/', function(req, res, next) {
 
 /* POST a new danger */
 router.post('/', function(req, res, next) {
+    if (!req.body.name) {
+        req.body.name = "Notified_by_DareDeVille"
+    }
     Danger.forge({
         longitude: req.body.longitude,
         latitude: req.body.latitude,
