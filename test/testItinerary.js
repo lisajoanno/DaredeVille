@@ -3,7 +3,7 @@ var expect = chai.expect;
 var directionDriver = require('../components/directions/itinerary_calculator').directionDriver;
 var request = require("request");
 
-var url = "http://daredeville.herokuapp.com/itinerary";
+var url = "http://daredeville.herokuapp.com/api/v1/itinerary";
 
 describe('Itinerary', function() {
 
