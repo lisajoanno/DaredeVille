@@ -13,6 +13,6 @@ describe('Dangers', function () {
                 expect(true).to.be.true;
                 done();
             });
-        })
+        });
     });
 });
