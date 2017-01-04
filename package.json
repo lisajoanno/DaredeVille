@@ -5,7 +5,7 @@
   "scripts": {
     "start": "node ./bin/www",
     "set_env": "",
-    "test": "mocha"
+    "test": "NODE_ENV=test mocha"
   },
   "dependencies": {
     "@google/maps": "^0.3.0",
