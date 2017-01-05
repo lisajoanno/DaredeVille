@@ -7,7 +7,20 @@ var User = require('../model/models').User;
 
 router.post('/', function (req, res, next) {
     console.log('Received position');
-    User.where({
+
+
+    var body = [];
+    req.on('data', function(chunk) {
+        body.push(chunk);
+    }).on('end', function() {
+        body = Buffer.concat(body).toString();
+        // at this point, `body` has the entire request body stored in it as a string
+        console.log(body);
+
+    });
+
+
+    /*User.where({
         email: 'alexandre.cazala@gmail.com'
     }).select('id').then(function (a, b, c) {
         console.log('Result of select query:');
@@ -19,5 +32,8 @@ router.post('/', function (req, res, next) {
         }).then(function(a, b, c) {
             console.log("New position inserted for user something");
         })
-    });
+    });*/
+    res.json({"bloup":"bloup"});
 });
+
+module.exports = router;
