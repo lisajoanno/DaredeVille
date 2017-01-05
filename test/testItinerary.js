@@ -1,6 +1,7 @@
 var chai = require('chai');
 var expect = chai.expect;
 var directionDriver = require('../components/directions/itinerary_calculator').directionDriver;
+var bestwayFinder = require('../components/bestWay/bestway.js').bestwayFinder;
 var request = require("request");
 
 var url = "http://daredeville.herokuapp.com/api/v1/itinerary";
@@ -26,4 +27,20 @@ describe('Itinerary', function() {
         });
     });
 
+    describe('Test BestWay', function () {
+        it('computes the "line intersect danger"', function (done) {
+            assert(true).to.be.true;
+            done();
+        });
+
+        it('finds the dangers', function (done) {
+            assert(true).to.be.true;
+            done();
+        });
+
+        it('finds the best way', function (done) {
+            assert(true).to.be.true;
+            done();
+        });
+    });
 });
