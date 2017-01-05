@@ -69,13 +69,16 @@
     <script src="app.js"></script>
     <script src="components/dangers/dangers.js"></script>
     <script src="components/itinerary/itinerary.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
   <script>
     function initMap() {
 
-//      $.get( "ajax/test.html", function( data ) {
-//        $( ".result" ).html( data );
-//        alert( "Load was performed." );
-//      });
+      $.get( "/api/v1/position", function( data ) {
+        data.forEach(function(position) {
+          console.log(position.email);
+//          var pos =
+        })
+      });
       var uluru = {lat: 43.6047592, lng: 7.0639505};
       var map = new google.maps.Map(document.getElementById('map'), {
         zoom: 13,
