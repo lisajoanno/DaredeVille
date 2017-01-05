@@ -4,36 +4,29 @@ var router = express.Router();
 var Position = require('../model/models').Position;
 var User = require('../model/models').User;
 
+var jsonfile = require('jsonfile');
 
 router.post('/', function (req, res, next) {
     console.log('Received position');
 
-
-    var body = [];
-    req.on('data', function(chunk) {
-        body.push(chunk);
-    }).on('end', function() {
-        body = Buffer.concat(body).toString();
-        // at this point, `body` has the entire request body stored in it as a string
-        console.log(body);
-
+    /* Sorry for the following lines, but I would waste way too much time dealing with knex */
+    var file = 'sorry.json';
+    position = req.body;
+    jsonfile.readFile(file, function(err, obj) {
+        position.date = Date.now();
+        obj.push(position);
+        jsonfile.writeFile(file, obj);
     });
-
-
-    /*User.where({
-        email: 'alexandre.cazala@gmail.com'
-    }).select('id').then(function (a, b, c) {
-        console.log('Result of select query:');
-        console.log(a, b, c);
-        Position.insertRow({
-            user_id: 1,
-            latitude: 16151651,
-            longitude: 5464561
-        }).then(function(a, b, c) {
-            console.log("New position inserted for user something");
-        })
-    });*/
+    /* Sorry, again */
     res.json({"bloup":"bloup"});
+});
+
+router.get('/', function(req, res, next) {
+    /* Sorry, sorry, sorry */
+    jsonfile.readFile(file, function(err, obj) {
+        res.json(obj);
+    });
+    /* :( :( :( :( :( */
 });
 
 module.exports = router;
