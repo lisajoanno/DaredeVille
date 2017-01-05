@@ -29,17 +29,17 @@ describe('Itinerary', function() {
 
     describe('Test BestWay', function () {
         it('computes the "line intersect danger"', function (done) {
-            assert(true).to.be.true;
+            expect(true).to.be.true;
             done();
         });
 
         it('finds the dangers', function (done) {
-            assert(true).to.be.true;
+            expect(true).to.be.true;
             done();
         });
 
         it('finds the best way', function (done) {
-            assert(true).to.be.true;
+            expect(true).to.be.true;
             done();
         });
     });
