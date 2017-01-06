@@ -29,6 +29,11 @@ var User = Bookshelf.Model.extend({
     tableName: 'user'
 });
 
+var Position = Bookshelf.Model.extend({
+    tableName: 'positions'
+});
+
 exports.Danger = Danger;
 exports.Notification = Notification;
 exports.User = User;
+exports.Position = Position;

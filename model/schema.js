@@ -31,6 +31,13 @@ var Schema = {
         id: {type:'increments', nullable: false, primary: true},
         danger_id: {type:'integer', nullable: false, unsigned: true},
         notification_id: {type: 'integer', nullable: false, unsigned: true}
+    },
+    positions: {
+        id: {type:'increments', nullable: false, primary: true},
+        user_id: {type: 'integer', nullable: false, unsigned: true},
+        latitude: {type: 'double', nullable: true, unsigned: true},
+        longitude: {type: 'double', nullable: true, unsigned: true},
+        date: {type: 'dateTime', nullable: false}
     }
 };
 module.exports = Schema;

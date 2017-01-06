@@ -69,16 +69,27 @@
     <script src="app.js"></script>
     <script src="components/dangers/dangers.js"></script>
     <script src="components/itinerary/itinerary.js"></script>
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
   <script>
     function initMap() {
-      var uluru = {lat: 43.6047592, lng: 7.0639505};
+
       var map = new google.maps.Map(document.getElementById('map'), {
-        zoom: 13,
-        center: uluru
+          zoom: 13,
+          center: {lat: 43.6047592, lng: 7.0639505}
       });
-      var marker = new google.maps.Marker({
-        position: uluru,
-        map: map
+      $.get( "/api/v1/position", function( data ) {
+        data = data.reverse().slice(0, 5);
+        data.forEach(function(position) {
+          console.log(position);
+          var pos = {lat: position.lat, lng: position.lng};
+          var date = new Date(position.date*1000);
+
+          var marker = new google.maps.Marker({
+            position: pos,
+            map: map,
+            title: position.email
+          });
+        })
       });
     }
   </script>
