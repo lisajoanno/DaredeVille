@@ -78,7 +78,7 @@
           center: {lat: 43.6047592, lng: 7.0639505}
       });
       $.get( "/api/v1/position", function( data ) {
-        data = data.slice(0, 5);
+        data = data.reverse().slice(0, 5);
         data.forEach(function(position) {
           console.log(position);
           var pos = {lat: position.lat, lng: position.lng};
