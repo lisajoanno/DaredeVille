@@ -1,10 +1,10 @@
 dist: trusty
 sudo: required
 
-addons:
-  sonarqube:
-    token:
-      secure: SONAR_TOKEN
+#addons:
+#  sonarqube:
+#    token:
+#      secure: SONAR_TOKEN
 
 language: node_js
 node_js:
@@ -20,4 +20,4 @@ script:
 - cd scripts
 - . environment_variables_script.sh
 - npm test
-- sonar-scanner
+#- sonar-scanner
