@@ -1,10 +1,10 @@
 dist: trusty
 sudo: required
 
-#addons:
-#  sonarqube:
-#    token:
-#      secure: SONAR_TOKEN
+addons:
+  sonarqube:
+    token:
+      secure: "l1ii0lFNsVbIhCMb8mzTVdW3nZBQwY+dNpgNWlyIEXEBGSsLs7FaMBRE7RgteLpPssXYPdGxSHs+hPNxsusmovKnhhVQlqU9NqUMgYkkHZT/3mlphgY40msaVy1a1gL+FeQH/56o3BOY9nSUVzIO+v8EcHmyzK4Luv8sCo36K7WwKLEzrfJ/shG8nF+aD0ybbDNHMzRoIlzgeoX6Md7kLNxKxLBPeEumnlxQeBIkTujsh7LLfTHv09kIqyt1PDcm1nGevgECnmqP57WaY3T+QuUFYNy6HRDyySOQbaAAJpN55BXWz58XW29ICNB1G6yrO6h/tqBZVGe7m4UkDs4pvDw9Ukc7Lfqct+5mQfOwK710cLCL4YMwEyONNQ+W+5K9G0pdiS0IJPbHurArJGpxCLeysEJ4zhCMOhdFccvfhbVI8cPz3qdlxyDCOogxBKUeGHKchQRbMOosGHjaqIbHvJ8C6zJtYnEqzvQEfWkXHiegl9p5ddEI6djbfyKdc9mb639Xpbs927sUvxIzaKXbo9OFKBWczEzr5qxX/JTCntdtmw6BfDxctzl2y9mUVd9M6IBBDMSpBEcVu6a2bePpPi1rRJ7kW8pWrVHMtUz231CoUMS3nxuZXeHONQr5vSDjmIpIw7pcNpTuFyudQtT8AWLmCAxtp6l7l6GEtRJJVD8="
 
 language: node_js
 node_js:
@@ -20,4 +20,4 @@ script:
 - cd scripts
 - . environment_variables_script.sh
 - npm test
-#- sonar-scanner
+- sonar-scanner
