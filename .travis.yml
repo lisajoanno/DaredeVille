@@ -20,5 +20,4 @@ script:
 - cd scripts
 - . environment_variables_script.sh
 - npm test
-- npm run coverage
 - sonar-scanner
