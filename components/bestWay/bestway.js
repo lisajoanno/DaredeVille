@@ -11,17 +11,16 @@ var Promise = require('promise');
 var async = require('async');
 
 
+var bestwayFinder = {
+    findBestway: findBestwayFct
+};
 
 // Export private functions only in a test environment
 if(process.env.NODE_ENV === 'test'){
-    var bestwayFinder = {
+    bestwayFinder = {
         findBestway: findBestwayFct,
         findDangers: findDangers,
         lineIntersectDanger: lineIntersectDanger
-    };
-} else {
-    var bestwayFinder = {
-        findBestway: findBestwayFct
     };
 }
 
