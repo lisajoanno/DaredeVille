@@ -14,11 +14,18 @@ var directionDriver = require('../components/directions/itinerary_calculator').d
 
 /* GET itenerary listing. */
 router.get('/', function(req, res, next) {
+            
     directionDriver.getItinerary()
         .then(function(data) {
-            console.log("YOOOOOOOOOOOOOOOOOOOOOOO\n\n\n");
+
             res.json(data);
     })
 });
+
+router.get('/mall', function(req, res, next) {
+	res.json(directionDriver.getMallItinerary());
+});
+
+
 
 module.exports = router;

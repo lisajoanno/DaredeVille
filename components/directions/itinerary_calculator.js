@@ -10,6 +10,7 @@ var client = require('./connection').googleMapsClient;
 var bestwayFinder = require('../bestWay/bestway').bestwayFinder;
 var converter = require('../converters/gm_directions_to_daredeville_itinerary').converter;
 var Promise = require('promise');
+
 function getItinerary() {
     return new Promise(function (resolve, reject) {
         client.directions({
@@ -34,8 +35,26 @@ function getItinerary() {
     })
 }
 
+
+function getMallItinerary() {
+
+        var mall = { beacons : [{ id : 1, voisins : [{ id : 2, direction : "left"}]},{ id : 2, voisins : [{ id : 3, direction : "right"}]}, { id : 3, voisins : [{ id : 4, direction : "forward"}]}], magazins : [{name : "celio", beacon : 4}], entries : [{beacon : 1}] };
+
+	var magazinRequest = "celio";
+
+	for(var i = 0 ; i < mall.magazins.length ; i++)
+	{
+		if(mall.magazins[i].name == magazinRequest)
+		{
+			var beaconsList = [{beacon : 1, direction: null}, {beacon : 2, direction: "left"}, {beacon : 3, direction: "right"}, {beacon : 4, direction: "forward"}];
+			return beaconsList;
+		}
+	}
+}
+
 var directionDriver = {
-    getItinerary: getItinerary
+    getItinerary: getItinerary,
+    getMallItinerary: getMallItinerary
 };
 
 
