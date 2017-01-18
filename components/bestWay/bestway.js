@@ -10,9 +10,19 @@
 var Promise = require('promise');
 var async = require('async');
 
-var bestwayFinder = {
-    findBestway: findBestwayFct
-};
+
+
+if(process.env.NODE_ENV === 'test'){
+    var bestwayFinder = {
+        findBestway: findBestwayFct,
+        findDangers: findDangers,
+        lineIntersectDanger: lineIntersectDanger
+    };
+} else {
+    var bestwayFinder = {
+        findBestway: findBestwayFct
+    };
+}
 
 /**
  * trouve la route avec le moins de danger
