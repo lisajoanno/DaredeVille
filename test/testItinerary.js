@@ -29,7 +29,20 @@ describe('Itinerary', function() {
 
     describe('Test BestWay', function () {
         it('computes the "line intersect danger"', function (done) {
-            expect(true).to.be.true;
+            var center = {longitude:43.615828,latitude:7.072732};
+            var radius = 0.0001;
+            var pointA = {lng:43.616007,lat:7.073011};
+            var pointB = {lng:43.616271,lat:7.072947};
+            var result = bestwayFinder.lineIntersectDanger(center, radius, pointA, pointB);
+            expect(result).to.be.false;
+
+            center = {longitude:43.615828,latitude:7.072732};
+            radius = 0.0001;
+            pointA = {lng:43.616007,lat:7.073011};
+            pointB = {lng:43.615586,lat:7.072391};
+            result = bestwayFinder.lineIntersectDanger(center, radius, pointA, pointB);
+            expect(result).to.be.true;
+
             done();
         });
 
