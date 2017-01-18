@@ -12,6 +12,7 @@ var async = require('async');
 
 
 
+// Export private functions only in a test environment
 if(process.env.NODE_ENV === 'test'){
     var bestwayFinder = {
         findBestway: findBestwayFct,
