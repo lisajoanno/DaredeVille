@@ -46,10 +46,76 @@ function getMallItinerary() {
 	{
 		if(mall.magazins[i].name == magazinRequest)
 		{
-			var beaconsList = [{beacon : 1, direction: null}, {beacon : 2, direction: "left"}, {beacon : 3, direction: "right"}, {beacon : 4, direction: "forward"}];
+			var beaconsList = mall.beacons;
+			var shortestWay = [];
+
+			for(var j = 0 ; j < mall.entries.length ; j++)
+			{
+				var entry = mall.entries[j].beacon;
+				var visited = [entry];
+
+
+				var way = dijkstra(beaconsList, entry, mall.magazins[i].beacon, visited);
+
+				var prevBeacon = mall.beacons[way[0]-1];
+
+				console.log(prevBeacon);
+
+				var ret = [{beacon : prevBeacon.id, direction : null}];
+
+				for(var k = 1 ; k < way.length ; k++)
+				{
+					for(var l = 0 ; l < prevBeacon.voisins.length ; l++)
+					{
+						var id = prevBeacon.voisins[l].id;
+						console.log(id);
+						if(id == way[k])
+						{
+
+							ret[ret.length] = [{beacon : id, direction : prevBeacon.voisins[l].direction}];
+							
+							if(ret.length == way.length)
+								break;
+
+							prevBeacon = mall.beacons[id-1];
+							continue;	
+						}
+					}
+				}
+				return ret;
+
+			}
 			return beaconsList;
 		}
 	}
+}
+
+function dijkstra(beaconsList, beacon, goal, visited)
+{
+	if(beacon == goal)
+		return [beacon];
+
+	for(var i = 0 ; beaconsList[beacon - 1].voisins.length ; i++)
+	{
+		var newBeacon = beaconsList[beacon - 1 ].voisins[i].id;
+
+
+
+		if(visited.indexOf(newBeacon) >= 0)
+			continue;
+
+		visited[visited.length] = newBeacon;
+
+		var res = dijkstra(beaconsList, newBeacon, goal, visited);
+
+		if( res != undefined)
+		{
+			var ret = [beacon];
+			ret = ret.concat(res);
+			return ret;
+		}
+	}
+	return undefined;
 }
 
 var directionDriver = {
