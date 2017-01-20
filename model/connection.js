@@ -11,11 +11,10 @@ var database_configuration = require('../configurations/database_conf');
 var knex = require('knex')({
     client: 'mysql',
     connection: {
-        host     : database_configuration.host,
-        user     : database_configuration.user,
-        password : database_configuration.password,
-        database : database_configuration.database,
-        port     : database_configuration.port,
+        host     : 'sql11.freemysqlhosting.net',
+        user     : 'sql11154421',
+        password : '4IQfvAqgYS',
+        database : 'sql11154421',
         //_socket: '/var/run/mysqld/mysqld.sock'
     }
 });
