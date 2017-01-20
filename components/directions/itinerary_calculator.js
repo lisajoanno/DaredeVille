@@ -10,6 +10,7 @@ var client = require('./connection').googleMapsClient;
 var bestwayFinder = require('../bestWay/bestway').bestwayFinder;
 var converter = require('../converters/gm_directions_to_daredeville_itinerary').converter;
 var Promise = require('promise');
+var jsonfile = require('jsonfile');
 
 function getItinerary() {
     return new Promise(function (resolve, reject) {
@@ -38,75 +39,7 @@ function getItinerary() {
 
 function getMallItinerary() {
 
-        var mall = {
-	  beacons: [
-	    {
-	      id: 1,
-	      voisins: [
-		{
-		  id: 2,
-		  direction: "ouest"
-		}
-	      ]
-	    },
-	    {
-	      id: 2,
-	      voisins: [
-		{
-
-		  id: 1,
-		  direction: "est"
-		},		
-		{
-
-		  id: 3,
-		  direction: "ouest"
-		},		
-		{
-
-		  id: 4,
-		  direction: "sud"
-		}
-	      ]
-	    },
-	    {
-	      id: 3,
-	      voisins: [
-		
-		{
-
-		  id: 2,
-		  direction: "nord"
-		},
-		{
-		  id: 4,
-		  direction: "sud"
-		}
-	      ]
-	    },
-	    {
-	      id: 4,
-	      voisins: [
-		{
-		  id: 3,
-		  direction: "nord"
-		}
-	      ]
-	    }
-	  ],
-	  magazins: [
-	    {
-	      name: "celio",
-	      beacon: 4
-	    }
-	  ],
-	  entries: [
-	    {
-	      beacon: 1
-	    }
-	  ]
-	};
-
+	var mall = jsonfile.readFileSync("data/mall1.json");
 	var magazinRequest = "celio";
 
 	for(var i = 0 ; i < mall.magazins.length ; i++)
@@ -139,8 +72,8 @@ function getMallItinerary() {
 						{
 
 							ret[ret.length] = [{beacon : id, direction : prevBeacon.voisins[l].direction}];
-							
-							
+						
+						
 							prevBeacon = mall.beacons[id-1];
 							continue;	
 						}
@@ -152,6 +85,7 @@ function getMallItinerary() {
 			return beaconsList;
 		}
 	}
+
 }
 
 function dijkstra(beaconsList, beacon, goal, visited)
