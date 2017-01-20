@@ -28,7 +28,7 @@ function saveNotifications(notification) {
 }
 
 /* GET dangers listing. */
-router.get('/', function(req, res, next) {
+router.get('/', function(req, res) {
     console.log("ueheuhe");
     Dangers.forge()
         .fetch()
@@ -53,7 +53,7 @@ router.get('/', function(req, res, next) {
  }
  }
  */
-router.post('/', function(req, res, next) {
+router.post('/', function(req, res) {
     console.log(req.body);
     if (!req.body.name) {
         req.body.name = "Notified_by_DareDeVille"

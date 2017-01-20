@@ -7,7 +7,7 @@ var User = require('../model/models').User;
 var jsonfile = require('jsonfile');
 
 var file = 'sorry.json';
-router.post('/', function (req, res, next) {
+router.post('/', function (req, res) {
 
     console.log('Received position');
     /* Sorry for the following lines, but I would waste way too much time dealing with knex */
@@ -21,7 +21,7 @@ router.post('/', function (req, res, next) {
     res.json({"bloup":"bloup"});
 });
 
-router.get('/', function(req, res, next) {
+router.get('/', function(req, res) {
     /* Sorry, sorry, sorry */
     jsonfile.readFile(file, function(err, obj) {
         res.json(obj);
