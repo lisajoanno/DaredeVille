@@ -54,7 +54,7 @@ router.get('/', function(req, res, next) {
  }
  */
 router.post('/', function(req, res, next) {
-    console.log(re q.body);
+    console.log(req.body);
     if (!req.body.name) {
         req.body.name = "Notified_by_DareDeVille"
     }
