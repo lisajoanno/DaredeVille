@@ -38,7 +38,69 @@ function getItinerary() {
 
 function getMallItinerary() {
 
-        var mall = { beacons : [{ id : 1, voisins : [{ id : 2, direction : "left"}]},{ id : 2, voisins : [{ id : 3, direction : "right"}]}, { id : 3, voisins : [{ id : 4, direction : "forward"}]}], magazins : [{name : "celio", beacon : 4}], entries : [{beacon : 1}] };
+        var mall = {
+	  beacons: [
+	    {
+	      id: 1,
+	      voisins: [
+		{
+		  id: 2,
+		  direction: "ouest"
+		}
+	      ]
+	    },
+	    {
+	      id: 2,
+	      voisins: [
+		{
+
+		  id: 1,
+		  direction: "est"
+		},		
+		{
+
+		  id: 3,
+		  direction: "ouest"
+		}
+	      ]
+	    },
+	    {
+	      id: 3,
+	      voisins: [
+		
+		{
+
+		  id: 2,
+		  direction: "nord"
+		},
+		{
+		  id: 4,
+		  direction: "sud"
+		}
+	      ]
+	    },
+	    {
+	      id: 4,
+	      voisins: [
+		{
+		  id: 3,
+		  direction: "nord"
+		}
+	      ]
+	    }
+	  ],
+	  magazins: [
+	    {
+	      name: "celio",
+	      beacon: 4
+	    }
+	  ],
+	  entries: [
+	    {
+	      beacon: 1
+	    }
+	  ]
+	};
 
 	var magazinRequest = "celio";
 
