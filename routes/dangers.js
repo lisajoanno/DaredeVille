@@ -41,8 +41,20 @@ router.get('/', function(req, res, next) {
 });
 
 /* POST a new danger */
+/* example : */
+/*
+ {
+ "latitude": 43.60326743161359,
+ "longitude": 7.048587799072266,
+ "name": "terroriste",
+ "notification": {
+ "type": "MAIRIE",
+ "danger_lvl": 1
+ }
+ }
+ */
 router.post('/', function(req, res, next) {
-    console.log(req.body);
+    console.log(re q.body);
     if (!req.body.name) {
         req.body.name = "Notified_by_DareDeVille"
     }
