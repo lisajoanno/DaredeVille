@@ -20,9 +20,9 @@ var mailer = require("../components/mailer/mailer").mailer;
 
 /* GET itinerary listing. */
 //(fromName, toName, toAdress, latitude, longitude)
-router.get('/', function(req, res, next) {
+router.get('/', function(req, res) {
 
-    var prom = mailer.sendMail("Le petit Nicolas", "Pierre massanès", "biblock05@gmx.fr", "49.614689", "7.071705").then(function(info, err){
+    mailer.sendMail("Le petit Nicolas", "Pierre massanès", "biblock05@gmx.fr", "49.614689", "7.071705").then(function(info, err){
         if (err) {
             console.log("PAS COOL");
             res.json(err);

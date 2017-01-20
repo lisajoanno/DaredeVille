@@ -22,21 +22,18 @@ function saveNotifications(notification) {
         danger_lvl: notification.danger_lvl
     }).save()
         .then(function (notification) {
-            console.log("ya");
             return notification.id;
         });
 }
 
 /* GET dangers listing. */
-router.get('/', function(req, res, next) {
+router.get('/', function(req, res) {
     Dangers.forge()
         .fetch()
         .then(function (collection) {
-            console.log("hohoe")
             res.json({error:false, data: collection.toJSON()});
         })
         .catch(function(err) {
-            console.log("test");
             res.status(500).json({error: true, data: {message: err.message}});
         })
 });
@@ -54,7 +51,7 @@ router.get('/', function(req, res, next) {
  }
  }
  */
-router.post('/', function(req, res, next) {
+router.post('/', function(req, res) {
     console.log(req.body);
     if (!req.body.name) {
         req.body.name = "Notified_by_DareDeVille"

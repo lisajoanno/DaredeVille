@@ -6,7 +6,7 @@
     "start": "node ./bin/www",
     "set_env": "",
     "test": "NODE_ENV=test mocha",
-    "coverage": "istanbul cover _mocha -- -R spec"
+    "coverage": "./node_modules/.bin/istanbul cover _mocha -- -R spec"
   },
   "dependencies": {
     "@google/maps": "^0.3.0",

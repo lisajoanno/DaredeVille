@@ -37,11 +37,17 @@ function getItinerary() {
 }
 
 
-function getMallItinerary() {
+function getMallItinerary(mallRequest, magazinRequest) {
 
-	var mall = jsonfile.readFileSync("data/mall1.json");
-	var magazinRequest = "celio";
+	var mall;
 
+	try {
+		mall = jsonfile.readFileSync("data/" + mallRequest + ".json");
+	} catch(err) {
+		return {error : "no mall named " + mallRequest};
+	}
+
+	console.log(mall);
 	for(var i = 0 ; i < mall.magazins.length ; i++)
 	{
 		if(mall.magazins[i].name == magazinRequest)
@@ -84,6 +90,8 @@ function getMallItinerary() {
 			}
 			return beaconsList;
 		}
+
+		return {error : "no magazin named " + magazinRequest + " in mall : " + mallRequest};
 	}
 
 }
