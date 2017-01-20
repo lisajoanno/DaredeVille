@@ -23,7 +23,9 @@ router.get('/', function(req, res, next) {
 });
 
 router.get('/mall', function(req, res, next) {
-	res.json(directionDriver.getMallItinerary());
+	var mall = req.query.mall;
+	var magazin = req.query.magazin;
+	res.json(directionDriver.getMallItinerary(mall, magazin));
 });
 
 
