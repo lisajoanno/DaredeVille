@@ -76,20 +76,21 @@
 
     var markers = [];
     var map;
+    var colors = ["green", "blue", "red", "yellow", "purple"];
+    var dataInterval = null;
 
-    function clean() {
-      return new google.maps.Map(document.getElementById('map'), {
-        zoom: 13,
-        center: {lat: 43.6047592, lng: 7.0639505}
-      });
-    }
+
+    var positions = [];
     function initMap() {
       map = new google.maps.Map(document.getElementById('map'), {
           zoom: 13,
           center: {lat: 43.6047592, lng: 7.0639505}
       });
       map.addListener('click', function(event) {
-        console.log(""+event.latLng);
+        //{"lng":7.068469519344075,"lat":43.60343090614397,"email":"Lisa","date":1483662491611, "name": "Lisa"}
+        positions.push(
+                '{"lng":'+event.latLng.lng()+',"lat":'+event.latLng.lat()+',"email":"Matt","date":1483662491611,"name": "Matt"}');
+
       });
       var markerCluster = new MarkerClusterer(map, markers,
               {imagePath: 'https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/m'});
@@ -97,15 +98,64 @@
     }
 
     function addMarker(location, title, label) {
+      var color = colors[markers.length];
       var marker = new google.maps.Marker({
         position: location,
         title: title,
         label: label,
         map: map,
-        animation: google.maps.Animation.DROP
+        animation: google.maps.Animation.DROP,
+        icon: "http://maps.google.com/mapfiles/ms/icons/"+color+"-dot.png"
+      });
+
+      markers.push(marker);
+    }
+    var int = 0;
+
+    function updatePosition(location, title, label) {
+      var color = colors[markers.length];
+      var test = 0;
+
+      for (var i = 0; i < markers.length ; ++i) {
+        if (markers[i].title == title) {
+          markers[i].setPosition(location);
+          return;
+        }
+      }
+      console.log(markers);
+      if (test == 0) {
+        var marker = new google.maps.Marker({
+          position: location,
+          title: title,
+          label: label,
+          map: map,
+          animation: google.maps.Animation.DROP,
+          icon: "http://maps.google.com/mapfiles/ms/icons/" + color + "-dot.png"
+        });
+
+        markers.push(marker);
+      }
+    }
+
+    function updateDanger(location, title, label) {
+      var color = colors[markers.length];
+      for (var i = 0; i < markers.length ; ++i) {
+        if (markers[i].title === title && markers[i].location === location) {
+          return;
+        }
+      }
+      var marker = new google.maps.Marker({
+        position: location,
+        title: title,
+        label: label,
+        map: map,
+        animation: google.maps.Animation.DROP,
+        icon: "http://maps.google.com/mapfiles/ms/icons/"+color+"-dot.png"
       });
       markers.push(marker);
     }
+
+
 
     function setMapOnAll(map) {
       for (var i = 0; i < markers.length; i++) {
@@ -130,26 +180,34 @@
     }
 
 
-    function position() {
-      deleteMarkers();
+    function updatePositions() {
       $.get( "/api/v1/position", function( data ) {
         data = data.reverse().slice(0, 5);
+        data.forEach(function(location) {
+          updatePosition({lat:location.lat, lng:location.lng}, location.email, location.email);
+        });
+      });
+    }
+    function position() {
+      deleteMarkers();
+      clearInterval(dataInterval);
+      dataInterval = setInterval(updatePositions, 500);
 
-        data.map(function(location, i) {
-          addMarker({lat:location.lat, lng:location.lng}, location.email, location.email);
+    }
+
+    function updateDangers() {
+      $.get( "/api/v1/dangers", function( data ) {
+        data.data.forEach(function(location) {
+          updateDanger({lat:location.latitude, lng: location.longitude}, location.name, location.name);
         });
       });
     }
 
-
     function dangers() {
       deleteMarkers();
-      $.get( "/api/v1/dangers", function( data ) {
-        console.log(data);
-        data.data.map(function (location, i) {
-          addMarker({lat:location.latitude, lng:location.longitude}, location.name,location.name);
-        });
-      });
+      clearInterval(dataInterval);
+      dataInterval = setInterval(updateDangers, 500);
+
     }
 
 
