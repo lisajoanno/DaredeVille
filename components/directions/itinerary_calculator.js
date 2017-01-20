@@ -38,7 +38,74 @@ function getItinerary() {
 
 function getMallItinerary() {
 
-        var mall = { beacons : [{ id : 1, voisins : [{ id : 2, direction : "left"}]},{ id : 2, voisins : [{ id : 3, direction : "right"}]}, { id : 3, voisins : [{ id : 4, direction : "forward"}]}], magazins : [{name : "celio", beacon : 4}], entries : [{beacon : 1}] };
+        var mall = {
+	  beacons: [
+	    {
+	      id: 1,
+	      voisins: [
+		{
+		  id: 2,
+		  direction: "ouest"
+		}
+	      ]
+	    },
+	    {
+	      id: 2,
+	      voisins: [
+		{
+
+		  id: 1,
+		  direction: "est"
+		},		
+		{
+
+		  id: 3,
+		  direction: "ouest"
+		},		
+		{
+
+		  id: 4,
+		  direction: "sud"
+		}
+	      ]
+	    },
+	    {
+	      id: 3,
+	      voisins: [
+		
+		{
+
+		  id: 2,
+		  direction: "nord"
+		},
+		{
+		  id: 4,
+		  direction: "sud"
+		}
+	      ]
+	    },
+	    {
+	      id: 4,
+	      voisins: [
+		{
+		  id: 3,
+		  direction: "nord"
+		}
+	      ]
+	    }
+	  ],
+	  magazins: [
+	    {
+	      name: "celio",
+	      beacon: 4
+	    }
+	  ],
+	  entries: [
+	    {
+	      beacon: 1
+	    }
+	  ]
+	};
 
 	var magazinRequest = "celio";
 
@@ -59,7 +126,7 @@ function getMallItinerary() {
 
 				var prevBeacon = mall.beacons[way[0]-1];
 
-				console.log(prevBeacon);
+
 
 				var ret = [{beacon : prevBeacon.id, direction : null}];
 
@@ -68,15 +135,12 @@ function getMallItinerary() {
 					for(var l = 0 ; l < prevBeacon.voisins.length ; l++)
 					{
 						var id = prevBeacon.voisins[l].id;
-						console.log(id);
 						if(id == way[k])
 						{
 
 							ret[ret.length] = [{beacon : id, direction : prevBeacon.voisins[l].direction}];
 							
-							if(ret.length == way.length)
-								break;
-
+							
 							prevBeacon = mall.beacons[id-1];
 							continue;	
 						}
@@ -93,29 +157,34 @@ function getMallItinerary() {
 function dijkstra(beaconsList, beacon, goal, visited)
 {
 	if(beacon == goal)
+        {
 		return [beacon];
+	}
 
-	for(var i = 0 ; beaconsList[beacon - 1].voisins.length ; i++)
+	var currentBestWay = undefined;
+
+	for(var i = 0 ; i <beaconsList[beacon - 1].voisins.length ; i++)
 	{
+		var tempVisited = visited.slice();
 		var newBeacon = beaconsList[beacon - 1 ].voisins[i].id;
 
 
-
-		if(visited.indexOf(newBeacon) >= 0)
+		if(tempVisited.indexOf(newBeacon) >= 0) {
 			continue;
+		}
 
-		visited[visited.length] = newBeacon;
+		tempVisited[tempVisited.length] = newBeacon;
 
-		var res = dijkstra(beaconsList, newBeacon, goal, visited);
+		var res = dijkstra(beaconsList, newBeacon, goal, tempVisited);
 
 		if( res != undefined)
 		{
-			var ret = [beacon];
-			ret = ret.concat(res);
-			return ret;
+			if(currentBestWay == undefined || res.length < currentBestWay.length - 1)
+				currentBestWay = [beacon].concat(res);
+			
 		}
 	}
-	return undefined;
+	return currentBestWay;
 }
 
 var directionDriver = {
