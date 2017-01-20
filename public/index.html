@@ -66,8 +66,16 @@
     <script src="app.js"></script>
     <script src="components/dangers/dangers.js"></script>
     <script src="components/itinerary/itinerary.js"></script>
-   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-  <script>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+
+  <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDTEwE36GOEhTOzvRzRnr0YDNm-kf9C0Ek&callback=initMap">
+  </script>
+  <script src="https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/markerclusterer.js"></script>
+    <script>
+
+    var markers = [];
+    var map;
 
     function clean() {
       return new google.maps.Map(document.getElementById('map'), {
@@ -76,70 +84,77 @@
       });
     }
     function initMap() {
-      var map = new google.maps.Map(document.getElementById('map'), {
+      map = new google.maps.Map(document.getElementById('map'), {
           zoom: 13,
           center: {lat: 43.6047592, lng: 7.0639505}
-
-      })
-      google.maps.event.addListener(map, 'click', function(event) {
+      });
+      map.addListener('click', function(event) {
         console.log(""+event.latLng);
       });
-      $.get( "/api/v1/position", function( data ) {
-        data = data.reverse().slice(0, 5);
-        data.forEach(function(position) {
-          console.log(position);
-          var pos = {lat: position.lat, lng: position.lng};
-          var date = new Date(position.date*1000);
-
-          var marker = new google.maps.Marker({
-            position: pos,
-            map: map,
-            title: position.email
-          });
-        })
-      });
+      var markerCluster = new MarkerClusterer(map, markers,
+              {imagePath: 'https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/m'});
+      position();
     }
 
+    function addMarker(location, title, label) {
+      var marker = new google.maps.Marker({
+        position: location,
+        title: title,
+        label: label,
+        map: map,
+        animation: google.maps.Animation.DROP
+      });
+      markers.push(marker);
+    }
+
+    function setMapOnAll(map) {
+      for (var i = 0; i < markers.length; i++) {
+        markers[i].setMap(map);
+      }
+    }
+
+    // Removes the markers from the map, but keeps them in the array.
+    function clearMarkers() {
+      setMapOnAll(null);
+    }
+
+    // Shows any markers currently in the array.
+    function showMarkers() {
+      setMapOnAll(map);
+    }
+
+    // Deletes all markers in the array by removing references to them.
+    function deleteMarkers() {
+      clearMarkers();
+      markers = [];
+    }
+
+
     function position() {
-      var res = clean();
+      deleteMarkers();
       $.get( "/api/v1/position", function( data ) {
         data = data.reverse().slice(0, 5);
-        data.forEach(function(position) {
-          console.log(position);
-          var pos = {lat: position.lat, lng: position.lng};
-          var date = new Date(position.date*1000);
 
-          var marker = new google.maps.Marker({
-            position: pos,
-            map: res,
-            title: position.email
-          });
-        })
+        data.map(function(location, i) {
+          addMarker({lat:location.lat, lng:location.lng}, location.email, location.email);
+        });
       });
     }
 
 
     function dangers() {
-      var res = clean();
-      console.log("dangers");
+      deleteMarkers();
       $.get( "/api/v1/dangers", function( data ) {
-        data.data.forEach(function(position) {
-          var pos = {lat: position.latitude, lng: position.longitude};
-          console.log(position);
-          var marker = new google.maps.Marker({
-            position: pos,
-            map: res,
-            title: "test"
-          });
-        })
+        console.log(data);
+        data.data.map(function (location, i) {
+          addMarker({lat:location.latitude, lng:location.longitude}, location.name,location.name);
+        });
       });
     }
 
 
+     </script>
 
-  </script>
-  <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDTEwE36GOEhTOzvRzRnr0YDNm-kf9C0Ek&callback=initMap">
-  </script>
 
   </body>
 </html>

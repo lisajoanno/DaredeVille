@@ -29,13 +29,14 @@ function saveNotifications(notification) {
 
 /* GET dangers listing. */
 router.get('/', function(req, res, next) {
-    console.log("ueheuhe");
     Dangers.forge()
         .fetch()
         .then(function (collection) {
+            console.log("hohoe")
             res.json({error:false, data: collection.toJSON()});
         })
         .catch(function(err) {
+            console.log("test");
             res.status(500).json({error: true, data: {message: err.message}});
         })
 });
