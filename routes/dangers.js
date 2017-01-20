@@ -29,6 +29,7 @@ function saveNotifications(notification) {
 
 /* GET dangers listing. */
 router.get('/', function(req, res, next) {
+    console.log("ueheuhe");
     Dangers.forge()
         .fetch()
         .then(function (collection) {
@@ -41,6 +42,7 @@ router.get('/', function(req, res, next) {
 
 /* POST a new danger */
 router.post('/', function(req, res, next) {
+    console.log(req.body);
     if (!req.body.name) {
         req.body.name = "Notified_by_DareDeVille"
     }
@@ -54,6 +56,7 @@ router.post('/', function(req, res, next) {
         // Danger successfully added
         // save notifications
         console.log("test#2");
+            console.log(req.body);
         saveNotifications(req.body.notification)
             .then(function(id) {
                 console.log(id);
