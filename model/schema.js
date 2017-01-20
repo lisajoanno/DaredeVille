@@ -8,8 +8,8 @@
 var Schema = {
     dangers: {
         id: {type: 'increments', nullable: false, primary: true},
-        latitude: {type: 'integer', nullable: false},
-        longitude: {type: 'integer', nullable: false},
+        latitude: {type: 'decimal', nullable: false},
+        longitude: {type: 'decimal', nullable: false},
         created_at: {type: 'dateTime', nullable: false},
         updated_at: {type: 'dateTime', nullable: true},
         name: {type: 'string', maxlength: 150, nullable: false}
