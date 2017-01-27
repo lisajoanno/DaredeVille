@@ -74,7 +74,7 @@ function getMallItinerary(mallRequest, magazinRequest) {
 						if(id == way[k])
 						{
 
-							ret[ret.length] = [{beacon : id, direction : prevBeacon.voisins[l].direction}];
+							ret[ret.length] = {beacon : id, direction : prevBeacon.voisins[l].direction};
 						
 						
 							prevBeacon = mall.beacons[id-1];
