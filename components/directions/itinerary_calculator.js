@@ -12,14 +12,11 @@ var converter = require('../converters/gm_directions_to_daredeville_itinerary').
 var Promise = require('promise');
 var jsonfile = require('jsonfile');
 
-function getItinerary() {
+function getItinerary(origin, destination) {
     return new Promise(function (resolve, reject) {
         client.directions({
-            origin: "Gare de Nice-Ville, 12 Avenue Thiers, 06000 Nice",
-            destination: {
-                lat: 43.701950, 
-                lng: 7.280609
-            },
+            origin: origin,
+            destination: destination,
             alternatives:true,
             mode: "walking"
         }, function (err, data) {

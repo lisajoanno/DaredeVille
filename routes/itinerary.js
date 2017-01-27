@@ -14,9 +14,25 @@ var directionDriver = require('../components/directions/itinerary_calculator').d
 
 /* GET itenerary listing. */
 router.get('/', function(req, res) {
-            
-    directionDriver.getItinerary()
+    var origin = req.query.origin;
+    var destination = req.query.destination;
+
+    console.log(origin);
+    console.log(destination);
+    if(origin == undefined)
+	origin = "Gare de Nice-Ville, 12 Avenue Thiers, 06000 Nice";
+    if(destination == undefined)
+	destination = {
+                lat: 43.701950, 
+                lng: 7.280609
+            };
+
+    var magazin = req.query.magazin;
+    directionDriver.getItinerary(origin, destination)
         .then(function(data) {
+
+	    if(magazin != undefined)
+		data.beacons = directionDriver.getMallItinerary("mall1", magazin);
 
             res.json(data);
     })
