@@ -12,3 +12,6 @@ var router = express.Router();
 var firebaseController = require("../controllers/firebase");
 
 router.put('/register', firebaseController.register);
+
+
+module.exports = router;
