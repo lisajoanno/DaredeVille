@@ -10,7 +10,7 @@ describe('Itinerary', function() {
 
     describe('Direction driver', function () {
         it('gets the itinerary', function() {
-            return directionDriver.getItinerary().then(function(data){
+            return directionDriver.getItinerary("Gare de Nice-Ville, 12 Avenue Thiers, 06000 Nice", {lat: 43.701950, lng: 7.280609}).then(function(data){
                 expect(data).not.to.be.undefined;
                 expect(data.routes).not.to.be.undefined;
                 expect(data.status).to.be.undefined;
