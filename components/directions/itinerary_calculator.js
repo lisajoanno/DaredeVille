@@ -39,6 +39,7 @@ function getMallItinerary(mallRequest, magazinRequest) {
 	var mall;
 
 	try {
+		console.log("data/" + mallRequest + ".json");
 		mall = jsonfile.readFileSync("data/" + mallRequest + ".json");
 	} catch(err) {
 		return {error : "no mall named " + mallRequest};

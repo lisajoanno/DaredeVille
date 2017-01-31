@@ -16,6 +16,13 @@ describe('Itinerary', function() {
                 expect(data.status).to.be.undefined;
             });
         });
+
+        it('gets the mall itinerary',function (done) {
+            var expected = [{"beacon":1,"direction":null},{"beacon":2,"direction":"nord"},{"beacon":3,"direction":"nord"},{"beacon":10,"direction":"est"},{"beacon":9,"direction":"est"},{"beacon":8,"direction":"nord"},{"beacon":21,"direction":"ouest"}];
+            var result = directionDriver.getMallItinerary('polygoneRiviera','Cap\'cinema');
+            expect(result).to.deep.equal(expected);
+            done();
+        });
     });
 
     describe('Test GET route', function(){
