@@ -12,13 +12,13 @@ app.config(['$routeProvider', function($routeProvider) {
       .when("/", {
         templateUrl: "home.html"
       })
-      .when("/itinerary", {
-          templateUrl: "components/itinerary/itinerary.html",
-          controller: "itineraryCtrl"
-      })
       .when("/dangers", {
           templateUrl: "components/dangers/dangers.html",
           controller: "dangersCtrl"
+      })
+      .when("/itinerary", {
+          templateUrl: "components/itinerary/itinerary.html",
+          controller: "itineraryCtrl"
       })
       .when("/non", {
           templateUrl: "components/non/non.html"

@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>My AngularJS App</title>
+    <title>Dardeville - Et la lumière fut</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -37,6 +37,7 @@
         <ul class="nav navbar-nav">
           <li class="active"><a href="#" onclick="position()">Position des aveugles</a></li>
           <li><a href="#" onclick="dangers()">Dangers</a></li>
+          <li class="active"><a href="#/itinerary" onclick="itinerary()">Calcul d'itinéraire (demo)</a></li>
           <li class="dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Documentation <span class="caret"></span></a>
             <ul class="dropdown-menu">
@@ -46,6 +47,7 @@
               <li><a href="#">Clients disponibles</a></li>
             </ul>
           </li>
+
         </ul>
       </div><!--/.nav-collapse -->
     </div>
@@ -53,10 +55,6 @@
 
   <div id="map"></div>
   <div ng-view></div>
-  <hr>
-    <footer>
-      <p>&copy; 2016 DareDeVille, Inc.</p>
-    </footer>
 
     <script src="assets/javascript/angular.min.js"></script>
     <script src="assets/javascript/angular-route.min.js"></script>
@@ -87,10 +85,6 @@
           center: {lat: 43.6047592, lng: 7.0639505}
       });
       map.addListener('click', function(event) {
-        //{"lng":7.068469519344075,"lat":43.60343090614397,"email":"Lisa","date":1483662491611, "name": "Lisa"}
-        positions.push(
-                '{"lng":'+event.latLng.lng()+',"lat":'+event.latLng.lat()+',"email":"Matt","date":1483662491611,"name": "Matt"}');
-
       });
       var markerCluster = new MarkerClusterer(map, markers,
               {imagePath: 'https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/m'});
@@ -210,7 +204,24 @@
 
     }
 
+    function itinerary() {
+      deleteMarkers();
+      clearInterval(dataInterval);
+      map.addListener('rightclick', function(event) {
+        console.log("right");
+        addMarker(event.latLng, "Arrivée", "Arrivée");
+//      positions.push(
+//              '{"lng":'+event.latLng.lng()+',"lat":'+event.latLng.lat()+',"email":"Matt","date":1483662491611,"name": "Matt"}');
 
+    });
+      map.addListener('click', function(event) {
+        console.log("right");
+        addMarker(event.latLng, "Départ", "Départ");
+//      positions.push(
+//              '{"lng":'+event.latLng.lng()+',"lat":'+event.latLng.lat()+',"email":"Matt","date":1483662491611,"name": "Matt"}');
+
+      });
+    }
      </script>
 
 
