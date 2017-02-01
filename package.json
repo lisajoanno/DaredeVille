@@ -6,6 +6,7 @@
     "start": "node ./bin/www",
     "set_env": "",
     "test": "NODE_ENV=test mocha",
+    "test-integration":"NODE_ENV=test mocha test-integration",
     "coverage": "istanbul cover _mocha -- -R spec || true"
   },
   "dependencies": {
