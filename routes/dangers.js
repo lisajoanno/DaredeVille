@@ -12,6 +12,7 @@ var router = express.Router();
 var Dangers = require('../model/collections').Dangers;
 var Danger = require('../model/models').Danger;
 var Notification = require('../model/models').Notification;
+var FirebaseClient = require('../components/firebase/message-client');
 //var danger_queries = require('../model/prepared_queries');
 
 function saveNotifications(notification) {
@@ -73,7 +74,9 @@ router.post('/', function(req, res) {
                 danger.load(['notifications'])
                     .then(function(model) {
                         model.notifications().attach(id);
+                        FirebaseClient.sendMessageToEveryone("WILD DANGER APPEARED");
                         res.json({error:false, data: {message: 'Notification saved'}});
+
                     })
                     .catch(function(err) {
                         res.status(500).json({error:true, data: {message: err.message}});

@@ -14,7 +14,9 @@ EXEMPLE DE MESSAGE ENVOYE :
 }
  */
 function register(req, res) {
-    firebaseClient.setToken(req.body.username, req.body.token)
+    console.log("FIREBASE CONTROLLER");
+    firebaseClient.setToken(req.body.username, req.body.token);
+    res.json({error:false, data: "OK"});
 }
 
 module.exports= {
