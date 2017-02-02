@@ -17,8 +17,8 @@ function sendMessageToUserToken(deviceId, message) {
         body: JSON.stringify(
             {
                 "notification": {
-                    "title": 'Registered',
-                    "body": 'You\'re now registered to daredeville'
+                    "title": 'Notif',
+                    "body": message
                 },
                 "to": deviceId
             }
