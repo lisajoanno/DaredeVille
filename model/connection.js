@@ -12,10 +12,9 @@ var knex = require('knex')({
     client: 'mysql',
     connection: {
         host     : 'sql11.freemysqlhosting.net',
-        user     : 'sql11154421',
-        password : '4IQfvAqgYS',
-        database : 'sql11154421',
-        //_socket: '/var/run/mysqld/mysqld.sock'
+        user     : 'sql11156849',
+        password : 'KZWqQN94C6',
+        database : 'sql11156849'
     }
 });
 

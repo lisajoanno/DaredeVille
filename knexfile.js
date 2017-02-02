@@ -6,9 +6,9 @@ module.exports = {
     client: 'mysql',
     connection: {
       host     : 'sql11.freemysqlhosting.net',
-      user     : 'sql11154421',
-      password : '4IQfvAqgYS',
-      database : 'sql11154421'
+      user     : 'sql11156849',
+      password : 'KZWqQN94C6',
+      database : 'sql11156849'
     }
   },
 
@@ -16,9 +16,9 @@ module.exports = {
     client: 'mysql',
     connection: {
       host     : 'sql11.freemysqlhosting.net',
-      user     : 'sql11154421',
-      password : '4IQfvAqgYS',
-      database : 'sql11154421'
+      user     : 'sql11156849',
+      password : 'KZWqQN94C6',
+      database : 'sql11156849'
     },
     pool: {
       min: 2,
@@ -33,9 +33,9 @@ module.exports = {
     client: 'mysql',
     connection: {
       host     : 'sql11.freemysqlhosting.net',
-      user     : 'sql11154421',
-      password : '4IQfvAqgYS',
-      database : 'sql11154421'
+      user     : 'sql11156849',
+      password : 'KZWqQN94C6',
+      database : 'sql11156849'
     },
     pool: {
       min: 2,
