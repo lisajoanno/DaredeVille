@@ -125,10 +125,17 @@ function deleteMarkers() {
 }
 function updatePositions() {
     $.get( "/api/v1/position", function( data ) {
+        // data = data.reverse().slice(0, 5);
+        // data.forEach(function(location) {
+        //     updatePosition({lat:location.lat, lng:location.lng}, location.email, location.email);
+        // });
         data = data.reverse().slice(0, 5);
-        data.forEach(function(location) {
-            updatePosition({lat:location.lat, lng:location.lng}, location.email, location.email);
-        });
+        data.forEach(function(position) {
+            console.log(position);
+            var pos = {lat: position.lat, lng: position.lng};
+            var date = new Date(position.date*1000);
+            addMarker(pos, position.email, position.email, "blue");
+        })
     });
 }
 function position() {
