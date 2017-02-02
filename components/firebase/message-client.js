@@ -38,6 +38,7 @@ function sendMessageToUserToken(deviceId, message) {
 
 function sendMessageToEveryone(message) {
     for (var user in users) {
+        console.log("MESSAGE SENT TO "+user);
         sendMessageToUserName(user, message);
     }
 }
