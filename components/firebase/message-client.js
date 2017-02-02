@@ -36,6 +36,7 @@ function sendMessageToUserToken(deviceId, message) {
 }
 function setToken(username, token) {
     user[username] = token;
+    console.log("[FIREBASE] user "+username+" registered with token "+token);
 }
 module.exports = {
     sendMessageToUserName: sendMessageToUserName,
