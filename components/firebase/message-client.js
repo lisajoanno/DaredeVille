@@ -46,7 +46,7 @@ function sendMessageToEveryone(message) {
 function setToken(username, token) {
     users[username] = token;
     console.log("[FIREBASE] user "+username+" registered with token "+token);
-    sendMessageToUserToken(token, "daredeville");
+    sendMessageToUserToken(token, "Hello "+username+" !");
 }
 module.exports = {
     sendMessageToUserName: sendMessageToUserName,

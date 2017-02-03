@@ -74,7 +74,7 @@ router.post('/', function(req, res) {
                 danger.load(['notifications'])
                     .then(function(model) {
                         model.notifications().attach(id);
-                        FirebaseClient.sendMessageToEveryone("WILD DANGER APPEARED");
+                        FirebaseClient.sendMessageToEveryone("A WILD DANGER APPEARED");
                         res.json({error:false, data: {message: 'Notification saved'}});
 
                     })
