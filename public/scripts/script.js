@@ -131,9 +131,9 @@ function updatePositions() {
         // });
         data = data.reverse().slice(0, 5);
         data.forEach(function(position) {
+            var pos = {lat: position.lat, lng: position.lng};
             updatePosition(pos, position.email, position.email);
             // console.log(position);
-            // var pos = {lat: position.lat, lng: position.lng};
             // var date = new Date(position.date*1000);
             // addMarker(pos, position.email, position.email, "blue");
         })
